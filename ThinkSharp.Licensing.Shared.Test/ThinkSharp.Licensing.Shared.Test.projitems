@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>76039fbd-246e-4036-a389-78807f836b40</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>ThinkSharp.Licensing.Shared.Test</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)CheckSumAppenderTest.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CheckSumTest.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)EncoderTest.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helper\StringHelperTest.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Licensing\HardwareIdentifierTest.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Licensing\SerialNumberTest.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Licensing\SignedLicenseTest.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)LicTest.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Signing\LengthSigner.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TestHelper.cs" />
+  </ItemGroup>
+</Project>

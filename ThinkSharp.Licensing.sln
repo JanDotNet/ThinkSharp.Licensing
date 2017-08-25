@@ -1,0 +1,53 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "ThinkSharp.Licensing.Shared", "ThinkSharp.Licensing.Shared\ThinkSharp.Licensing.Shared.shproj", "{8D5622D5-E26E-4AFC-A6F6-01B7306FA978}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThinkSharp.Licensing.DotNetStandard", "ThinkSharp.Licensing.DotNetStandard\ThinkSharp.Licensing.DotNetStandard.csproj", "{19588653-BAA1-48F8-B294-D543E9E301C3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThinkSharp.Licensing.DotNetFull", "ThinkSharp.Licensing.DotNetFull\ThinkSharp.Licensing.DotNetFull.csproj", "{8B84E4D0-9C68-4FCA-AF8C-FC6F44C49940}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "ThinkSharp.Licensing.Shared.Test", "ThinkSharp.Licensing.Shared.Test\ThinkSharp.Licensing.Shared.Test.shproj", "{76039FBD-246E-4036-A389-78807F836B40}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThinkSharp.Licensing.DotNetFull.Test", "ThinkSharp.Licensing.DotNetFull.Test\ThinkSharp.Licensing.DotNetFull.Test.csproj", "{43D08B8B-0882-4FEB-B2B9-6640CAA49E25}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThinkSharp.Licensing.DotNetStandard.Test", "ThinkSharp.Licensing.DotNetStandard.Test\ThinkSharp.Licensing.DotNetStandard.Test.csproj", "{56F7DFE6-D19E-4FD4-9EAD-EFC64109847E}"
+EndProject
+Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		ThinkSharp.Licensing.Shared.Test\ThinkSharp.Licensing.Shared.Test.projitems*{43d08b8b-0882-4feb-b2b9-6640caa49e25}*SharedItemsImports = 4
+		ThinkSharp.Licensing.Shared.Test\ThinkSharp.Licensing.Shared.Test.projitems*{76039fbd-246e-4036-a389-78807f836b40}*SharedItemsImports = 13
+		ThinkSharp.Licensing.Shared\ThinkSharp.Licensing.Shared.projitems*{8b84e4d0-9c68-4fca-af8c-fc6f44c49940}*SharedItemsImports = 4
+		ThinkSharp.Licensing.Shared\ThinkSharp.Licensing.Shared.projitems*{8d5622d5-e26e-4afc-a6f6-01b7306fa978}*SharedItemsImports = 13
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{19588653-BAA1-48F8-B294-D543E9E301C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19588653-BAA1-48F8-B294-D543E9E301C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19588653-BAA1-48F8-B294-D543E9E301C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19588653-BAA1-48F8-B294-D543E9E301C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B84E4D0-9C68-4FCA-AF8C-FC6F44C49940}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B84E4D0-9C68-4FCA-AF8C-FC6F44C49940}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B84E4D0-9C68-4FCA-AF8C-FC6F44C49940}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B84E4D0-9C68-4FCA-AF8C-FC6F44C49940}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43D08B8B-0882-4FEB-B2B9-6640CAA49E25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43D08B8B-0882-4FEB-B2B9-6640CAA49E25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43D08B8B-0882-4FEB-B2B9-6640CAA49E25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43D08B8B-0882-4FEB-B2B9-6640CAA49E25}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56F7DFE6-D19E-4FD4-9EAD-EFC64109847E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56F7DFE6-D19E-4FD4-9EAD-EFC64109847E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56F7DFE6-D19E-4FD4-9EAD-EFC64109847E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56F7DFE6-D19E-4FD4-9EAD-EFC64109847E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DA001814-E6C4-4789-81EC-7FB4D4857263}
+	EndGlobalSection
+EndGlobal

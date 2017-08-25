@@ -1,0 +1,13 @@
+# git ignore file
+*.suo
+*.user
+*.TMP
+_ReSharper.*
+bin
+obj
+.vs/*
+
+doc/*
+packages/*
+TestResults/*
+logs/
