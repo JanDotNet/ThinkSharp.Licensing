@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <id>ThinkSharp.Licensing</id>
+        <version>1.0.0</version>
+        <title>Licensing Library</title>
+        <authors>Jan-Niklas Schäfer</authors>
+        <owners>Jan-Niklas Schäfer</owners>
+        <projectUrl>https://github.com/JanDotNet/ThinkSharp.Licensing</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Simple library with fluent API for creating and verifying signed licenses</description>
+        <summary>Simple library with fluent API for creating and verifying signed licenses</summary>
+        <releaseNotes />
+		<licenseUrl>https://github.com/JanDotNet/ThinkSharp.Licensing/blob/master/LICENSE.TXT</licenseUrl>
+        <copyright>Copyright (c) 2017 Jan-Niklas Schäfer</copyright>
+        <language>en-US</language>
+        <tags>License Signing Serial Key Security</tags>
+    </metadata>
+    <files>
+		 <file src="bin\Release\CommonQL.dll" target="lib\net40\CommonQL.dll" />
+		  <file src="bin\Release\CommonQL.xml" target="lib\net40\CommonQL.xml" />
+		  <file src="bin\Release\CommonQL.pdb" target="lib\net40\CommonQL.pdb" />
+    </files>
+</package>
