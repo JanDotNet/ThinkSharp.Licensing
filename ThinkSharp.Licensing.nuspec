@@ -17,8 +17,8 @@
         <tags>License Signing Serial Key Security</tags>
     </metadata>
     <files>
-		 <file src="bin\Release\CommonQL.dll" target="lib\net40\CommonQL.dll" />
-		  <file src="bin\Release\CommonQL.xml" target="lib\net40\CommonQL.xml" />
-		  <file src="bin\Release\CommonQL.pdb" target="lib\net40\CommonQL.pdb" />
+		<file src="ThinkSharp.Licensing.DotNetFull\bin\Release\ThinkSharp.Licensing.dll" target="lib\net45\ThinkSharp.Licensing.dll" />
+		<file src="ThinkSharp.Licensing.DotNetFull\bin\Release\ThinkSharp.Licensing.xml" target="lib\net45\ThinkSharp.Licensing.xml" />
+		<file src="ThinkSharp.Licensing.DotNetFull\bin\Release\ThinkSharp.Licensing.pdb" target="lib\net45\ThinkSharp.Licensing.pdb" />
     </files>
 </package>

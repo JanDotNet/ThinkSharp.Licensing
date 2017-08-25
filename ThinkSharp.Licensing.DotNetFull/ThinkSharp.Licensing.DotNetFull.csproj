@@ -7,8 +7,8 @@
     <ProjectGuid>{8B84E4D0-9C68-4FCA-AF8C-FC6F44C49940}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ThinkSharp.Licensing.DotNetFull</RootNamespace>
-    <AssemblyName>ThinkSharp.Licensing.DotNetFull</AssemblyName>
+    <RootNamespace>ThinkSharp</RootNamespace>
+    <AssemblyName>ThinkSharp.Licensing</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -31,6 +31,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
+    <DocumentationFile>bin\Release\ThinkSharp.Licensing.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />

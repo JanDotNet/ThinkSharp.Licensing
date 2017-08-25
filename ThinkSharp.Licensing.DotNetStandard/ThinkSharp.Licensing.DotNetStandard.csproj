@@ -12,6 +12,10 @@
     <FileVersion>0.1.0.0</FileVersion>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>bin\Release\netstandard2.0\ThinkSharp.Licensing.DotNetStandard.xml</DocumentationFile>
+  </PropertyGroup>
+
   <Import Project="..\ThinkSharp.Licensing.Shared\ThinkSharp.Licensing.Shared.projitems" Label="Shared" />
 
 </Project>
