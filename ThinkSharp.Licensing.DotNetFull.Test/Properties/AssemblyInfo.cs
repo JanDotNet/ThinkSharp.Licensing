@@ -1,4 +1,6 @@
-﻿using System.Reflection;
+﻿// Copyright (c) Jan-Niklas Schäfer. All rights reserved.  
+// Licensed under the MIT License. See LICENSE file in the project root for full license information.
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
