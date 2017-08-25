@@ -68,7 +68,7 @@ namespace ThinkSharp.Licensing
             Assert.AreEqual(4, splitted[3].Length);
             Assert.AreEqual(4, splitted[4].Length);
             for (int i = 1; i < splitted.Length; i++)
-                Assert.IsTrue(ValidNumbersRegex.IsMatch(splitted[i]));
+                Assert.IsTrue(ValidNumbersRegex.IsMatch(splitted[i]), $"Splitted part '{splitted[i]}' is not valid.");
         }
 
         [TestMethod]
