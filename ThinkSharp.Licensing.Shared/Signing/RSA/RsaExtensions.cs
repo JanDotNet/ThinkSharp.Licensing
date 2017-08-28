@@ -53,7 +53,7 @@ namespace ThinkSharp.Licensing
             var privateKey = Convert.ToBase64String(cp.ExportCspBlob(true));
             var publicKey = Convert.ToBase64String(cp.ExportCspBlob(false));
 
-            return new SigningKeyPair(privateKey, publicKey);
+            return new SigningKeyPair(publicKey, privateKey);
         }
     }
 }
