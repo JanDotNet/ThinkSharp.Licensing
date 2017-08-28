@@ -38,19 +38,6 @@ namespace ThinkSharp.Licensing.Shared.Test
             Assert.AreEqual(2, license.Properties.Count);
             Assert.AreEqual("Value1", license.Properties["Prop1"]);
             Assert.AreEqual("Value2", license.Properties["Prop2"]);
-
-            var expectedLicensePlain =   "ABC" + Environment.NewLine +
-                                        "CDE" + Environment.NewLine +
-                                        "08/25/2017 00:00:00" + Environment.NewLine +
-                                        "01/01/2100 00:00:00" + Environment.NewLine +
-                                        "Prop1:Value1" + Environment.NewLine +
-                                        "Prop2:Value2" + Environment.NewLine +
-                                        "aUrG4WI6BNeJareyXD3TLjF2jiDE3O/77X8A9dtu3KBgQxAMUm/L5LYp9PY0gotXk2VZCTIr6Skrg/Kx4RxzHPBU9D3OE6poT112EPAgw/zFyAxdyZc42KN86QPVIZsOBF87sXa+YLqx+iou7JIU6NnIWJJNvKXxRUA3U1Q3YhU=";
-
-            Assert.AreEqual(expectedLicensePlain, license.Serialize(true));
-
-            var expectedLicenseEncrypted = "YW9PJitCZGgBIRE5Dx85BBMxERosGxE7EB02GxEMKh09BBEwDx89GxEhEB02GxE7EB0BIXFzT109EXdgTFhpGiwLcF9jWxM7dkxgXkQzLSdtflNGFHpFHWNPRWdtWUR4eGk/f21rZh9mQmVEE2IjHBZZGGw1T1V0E2ZOTHB5YWBZRg5NFWFVWxhReR1rRFVZSx9acWJVaV86eEpzRwJHUxVTWFdEe2NUGWk/ZGQ3UEJYGhAzZX1NTFYuWmt1alllWXdvHxNKbhU6enFXaXd/ZGNHGBp/c0AqeWF9UwpoT1g7YWhUFmNiYnZLamN6YHl5cnhNGHQwcR5VQ3Q8";
-            Assert.AreEqual(expectedLicenseEncrypted, license.Serialize());
         }
 
         [TestMethod]
@@ -69,17 +56,35 @@ namespace ThinkSharp.Licensing.Shared.Test
             Assert.AreEqual(DateTime.MaxValue, license.ExpirationDate);
             Assert.AreEqual(DateTime.UtcNow.Date, license.IssueDate);
             Assert.AreEqual(0, license.Properties.Count);
+        }
 
-            var expectedLicensePlain = "NO_HARDWARE_ID" + Environment.NewLine +
-                                       "NO_SERIAL_NO" + Environment.NewLine +
+        [TestMethod]
+        public void TestSerialize_Without()
+        {
+            var expectedLicensePlain = HardwareIdentifier.NoHardwareIdentifier + Environment.NewLine +
+                                       SerialNumber.NoSerialNumber + Environment.NewLine +
                                        "08/25/2017 00:00:00" + Environment.NewLine +
                                        "12/31/9999 23:59:59" + Environment.NewLine +
                                        "WNy5DustX6XP+U8LpDD1oOsTFkDFipn7gwgHAoYG2lqw/I45jFb1+nUmDo0+BOz5p87dl/KDcLlxk0AVAS82QSQtbapx0LPEG+KoVt7sdlssNOsBN8MaT0jVpCOhQFEpb8wJeakAuiTO/hH2COlVOAuSgEgxv0/k3PmCyceCry8=";
 
-            Assert.AreEqual(expectedLicensePlain, license.Serialize(true));
-
             var expectedLicenseEncrypted = "bmJTY2BTZHpNeWReaWkBIW9Of35JeWhAbHJCZCwLEBUjGRQuEh09HAExEBc8GxsxECAGGhMuExwjEhg4GQ0+GBs0GRc5EiwLd2N1HmV0U1lUHXlRC3g0Z1FFZBxjZFJVZkZIbUhxThprXEZJYUJVbBNtUVojYhU0SmtuGgpvdUBIRBEqYmJ2HlE5F0lgBGpFQ2FgU0oxYXtNeBkzcX5dX0NgUFU8Z3FEZwZHRHd1F15oR1JybmJ/aW85bUxYG0tXUG5DQ3BHZV1uE1ZLRUxnalRodGIjQ2kzY2JgfW5AVX5rbkZ5Vh0jQBJRTW51SERCUlQ0Fg==";
-            Assert.AreEqual(expectedLicenseEncrypted, license.Serialize());
+
+            AssertSerializationWorks(expectedLicensePlain, expectedLicenseEncrypted, expectedLicensePlain);
+            AssertSerializationWorks(expectedLicensePlain, expectedLicenseEncrypted, expectedLicenseEncrypted);
+        }
+
+        private static void AssertSerializationWorks(string expectedLicensePlain, string expectedLicenseEncrypted, string licenseText)
+        {
+            var license = Lic.Verifier
+                .WithRsaPublicKey(PublicKey)
+                .WithoutApplicationCode()
+                .LoadAndVerify(licenseText);
+
+            var plainText = license.Serialize(true);
+            var encrypted = license.Serialize(false);
+
+            Assert.AreEqual(expectedLicensePlain, plainText);
+            Assert.AreEqual(expectedLicenseEncrypted, encrypted);
         }
     }
 }
