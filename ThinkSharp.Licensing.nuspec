@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <metadata>
         <id>ThinkSharp.Licensing</id>
-        <version>1.0.0</version>
+		<version>#VERSION#</version> <!-- Updated by build script -->
         <title>Licensing Library</title>
         <authors>Jan-Niklas Schäfer</authors>
         <owners>Jan-Niklas Schäfer</owners>
