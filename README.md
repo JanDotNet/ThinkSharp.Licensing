@@ -17,7 +17,7 @@ Simple library with fluent API for creating and verifying signed licenses
         
     // Validate for current computer
     if (!HardwareIdentifier.IsValidForCurrentComputer(hardwareIdentifier))
-        Console.WriteLine("Your license is not valid for this computer.");
+        Console.WriteLine("Entered license is not valid for this computer.");
     
 ## Create Serial Number
 
@@ -28,11 +28,11 @@ Simple library with fluent API for creating and verifying signed licenses
     if (!SerialNumber.IsCheckSumValid(serialNumber))
         Console.WriteLine("Entered serial number is not valid.");
         
-## Create key value Pair
+## Create public/private key Pair
 
     SigningKeyPair pair = Lic.KeyGenerator.GenerateRsaKeyPair();
-	  Console.WriteLine(pair.PrivateKey);
-	  Console.WriteLine(pair.PublicKey);
+    Console.WriteLine(pair.PrivateKey);
+    Console.WriteLine(pair.PublicKey);
     
 ## Create signed license
 
@@ -59,7 +59,7 @@ Simple library with fluent API for creating and verifying signed licenses
     // SUR0YmprFmknHRA5VBpOeUdYHQ==
     
     var plainText = license.Serialize(true);
-    // 5BED4PAB-ZATGXKGK-01SI8MFF-7T088W78-SRH4
+    // 5BED5GAB-E5TGXKGK-01SI8MFF-7T099W78-SRH4
     // SNABC-3RTC-DMW7-9SC1-MAHA
     // 08/28/2017 00:00:00
     // 12/31/9999 23:59:59
