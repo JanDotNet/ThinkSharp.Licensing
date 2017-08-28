@@ -13,17 +13,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)CheckSumAppender.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Constants.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Encoder.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)FileLicenseProvider.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)CustomLicenseProvider.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helper\StringHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helper\ValidationHelper.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ILicenseVerifier.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Licensing\Lic.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)LicenseSource\LicenseFile.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)LicenseVerifier.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)LicenseSource\ILicenseSource.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)LicenseSource\InMemoryLicenseSource.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)LicenseSource\LicenseContextSource.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Licensing\HardwareIdentifier.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Licensing\LicBuilder.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Licensing\LicKeyGenerator.cs" />
