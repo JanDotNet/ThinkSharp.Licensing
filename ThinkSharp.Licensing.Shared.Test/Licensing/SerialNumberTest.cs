@@ -11,7 +11,7 @@ namespace ThinkSharp.Licensing
     [TestClass]
     public class SerialNumberTest
     {
-        private static readonly Regex ValidNumbersRegex = new Regex("([A-Z]|0-9)");
+        private static readonly Regex ValidNumbersRegex = new Regex("^([A-Z]|[0-9])*$");
 
 
         [TestMethod]
@@ -69,6 +69,12 @@ namespace ThinkSharp.Licensing
             Assert.AreEqual(4, splitted[4].Length);
             for (int i = 1; i < splitted.Length; i++)
                 Assert.IsTrue(ValidNumbersRegex.IsMatch(splitted[i]), $"Splitted part '{splitted[i]}' is not valid.");
+        }
+
+        [TestMethod]
+        public void TestBuild_Fragment_6239()
+        {
+            Assert.IsTrue(ValidNumbersRegex.IsMatch("6234"));
         }
 
         [TestMethod]
