@@ -1,8 +1,10 @@
+# ThinkSharp.Licensing
+
 [![Build status](https://ci.appveyor.com/api/projects/status/l3aagqmbfmgxwv3t?svg=true)](https://ci.appveyor.com/project/JanDotNet/thinksharp-licensing)
 [![NuGet](https://img.shields.io/nuget/v/ThinkSharp.Licensing.svg)](https://www.nuget.org/packages/ThinkSharp.Licensing/) [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE.TXT)
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://paypal.me/JanDotNet)
 
-# Introduction
+## Introduction
 
 **ThinkSharp.Licensing** is a simple library with fluent API for creating and verifying signed licenses. It provides the following functionallities:
 
@@ -10,9 +12,9 @@
 * Creation / verification of serial numbers
 * Creation / verification of signing of licenses
 
-# Hardware Identifier
+## Hardware Identifier
 
-## Description
+### Description
 
 The hardware identifier is an identifier that derives from 4 characteristics of the computer's hardware (processor ID, serial number of BIOS and so on). The identifier may look like:
 
@@ -20,7 +22,7 @@ The hardware identifier is an identifier that derives from 4 characteristics of 
 
 Each characteristic is encoded in one of the 8-character parts. The hardware identifier will be accepted if at least 2 of the 4 characteristics are equal. That ensures, that the license doesn't become invalid if e.g. the processor of the computer changed. The last 4-character part is a check sum that can be used to validate the hardware identifier. 
 
-## Usage
+### Usage
 
     // Create:
     string hardwareIdentifier = HardwareIdentifier.ForCurrentComputer();
@@ -33,15 +35,15 @@ Each characteristic is encoded in one of the 8-character parts. The hardware ide
     if (!HardwareIdentifier.IsValidForCurrentComputer(hardwareIdentifier))
         Console.WriteLine("Entered license is not valid for this computer.");
     
-# Serial Number
+## Serial Number
 
-## Description
+### Description
 
 A serial number is random identifier with an 3 character alpha-numeric application code and a check sum. It looks like SNXXX-YYYY-YYYY-YYYY-ZZZ where XXX is the application code, YYYY is the random part and ZZZ is the check sum. E.g.: 
 
     SNABC-D156-KYJF-C4M5-1H96    
 
-## Usage
+### Usage
 
     // ABC = application code
     string serialNumber = SerialNumber.Create("ABC");
@@ -50,12 +52,8 @@ A serial number is random identifier with an 3 character alpha-numeric applicati
     if (!SerialNumber.IsCheckSumValid(serialNumber))
         Console.WriteLine("Entered serial number is not valid.");
         
-## Create public/private key Pair
+## Signed License
 
-    SigningKeyPair pair = Lic.KeyGenerator.GenerateRsaKeyPair();
-    Console.WriteLine(pair.PrivateKey);
-    Console.WriteLine(pair.PublicKey);
-    
 ## Create signed license
 
     SignedLicense license = Lic.Builder
@@ -99,3 +97,9 @@ A serial number is random identifier with an 3 character alpha-numeric applicati
 		    .WithRsaPublicKey(publicKey)
 		    .WithApplicationCode("ABC")
 		    .LoadAndVerify(licenseText);
+
+## Create public/private key Pair
+
+    SigningKeyPair pair = Lic.KeyGenerator.GenerateRsaKeyPair();
+    Console.WriteLine(pair.PrivateKey);
+    Console.WriteLine(pair.PublicKey);
