@@ -7,12 +7,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("ThinkSharp.Licensing Test Suite")]
+[assembly: AssemblyTitle(".Net Licensing Component Test Suite")]
 [assembly: AssemblyDescription("Simple library with fluent API for creating and verifying signed licenses ")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("ThinkSharp")]
 [assembly: AssemblyProduct("ThinkSharp.Licensing")]
-[assembly: AssemblyCopyright("Copyright © Jan-Niklas Schäfer 2017")]
+[assembly: AssemblyCopyright("Copyright © 2017 - Jan-Niklas Schäfer")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
