@@ -7,10 +7,12 @@ using System.Text.RegularExpressions;
 
 namespace ThinkSharp.Licensing
 {
-    // Serial Number Format:
-    // SNAPP-2543-3564-3456-3457
-    // SN{AppCode}-{Fragment}-{Fragment}-{Fragment}-{CheckSum}
-    public class SerialNumber
+    /// <summary>
+    /// Class that provides methods for creating and verifying serial numbers. Each serial number as the format
+    /// SN{AppCode}-{Fragment}-{Fragment}-{Fragment}-{CheckSum} (e.g. SNAPP-2543-3564-3456-3457).
+    /// {AppCode} consists of 3 upper case letters (A-Z).
+    /// </summary>
+    public static class SerialNumber
     {
         private static readonly Regex ApplicationCodeValidationRegex = new Regex("^[A-Z]{3}$", RegexOptions.Compiled);
         private static readonly CheckSumAppender CheckSumAppender = new CheckSumAppender(Seperator, new CheckSum(FragmentSize));
@@ -19,6 +21,15 @@ namespace ThinkSharp.Licensing
         private const int FragmentCount = 3;
         private const string Seperator = "-";
 
+        /// <summary>
+        /// Creates a serial number with the specified application code.
+        /// </summary>
+        /// <param name="threeLetterApplicationCode">
+        /// The application code to use. The application code consists of 3 upper case letters (A-Z).
+        /// </param>
+        /// <returns>
+        /// A serial number with the specified application code.
+        /// </returns>
         public static string Create(string threeLetterApplicationCode)
         {
             threeLetterApplicationCode = EnsureApplicationCodeIsValid(threeLetterApplicationCode);
@@ -38,6 +49,15 @@ namespace ThinkSharp.Licensing
             return threeLetterApplicationCode;
         }
 
+        /// <summary>
+        /// Creates an empty serial number with the specified application code where all fragments are '0000'.
+        /// </summary>
+        /// <param name="threeLetterApplicationCode">
+        /// The application code to use. The application code consists of 3 upper case letters (A-Z).
+        /// </param>
+        /// <returns>
+        /// An empty serial number with the specified application code.
+        /// </returns>
         public static string CreateEmpty(string threeLetterApplicationCode)
         {
             if (threeLetterApplicationCode == null)
@@ -51,11 +71,34 @@ namespace ThinkSharp.Licensing
             return CheckSumAppender.Append(fragmentsString);
         }
 
+        /// <summary>
+        /// Validates the check sum of the specified serial number.
+        /// </summary>
+        /// <param name="serialNumber">
+        /// The serial number to check.
+        /// </param>
+        /// <returns>
+        /// true if the check sum is valid or the serial number is equal to <see cref="NoSerialNumber"/>; 
+        /// otherwise false.
+        /// </returns>
         public static bool IsCheckSumValid(string serialNumber)
         {
             return CheckSumAppender.Verify(serialNumber);
         }
 
+        /// <summary>
+        /// Checks if a serial number has the specified application code.
+        /// </summary>
+        /// <param name="serialNumber">
+        /// The serial number to check.
+        /// </param>
+        /// <param name="applicationCode">
+        /// The application code used for checking.
+        /// </param>
+        /// <returns>
+        /// true if the serial number has the specified application code or if the serial number is equal to 
+        /// <see cref="NoSerialNumber"/>; otherwise false.
+        /// </returns>
         public static bool IsApplicationCodeValid(string serialNumber, string applicationCode)
         {
             if (serialNumber == NoSerialNumber)
@@ -75,6 +118,6 @@ namespace ThinkSharp.Licensing
             }
         }
 
-        internal static string NoSerialNumber = "NO_SERIAL_NO";
+        internal static readonly string NoSerialNumber = "NO_SERIAL_NO";
     }
 }

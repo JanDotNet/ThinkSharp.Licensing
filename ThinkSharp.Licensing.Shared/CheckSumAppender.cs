@@ -7,23 +7,53 @@ using System.Text;
 
 namespace ThinkSharp
 {
+    /// <summary>
+    /// The CheckSumAppender can be used to append the check sum to a string and verify strings which have a checksum appended.
+    /// </summary>
     public class CheckSumAppender
     {
         private readonly string mySeparator;
         private readonly CheckSum myChecksum;
 
+        /// <summary>
+        /// Creates a new instance of the class.
+        /// </summary>
+        /// <param name="separator">
+        /// The separator that separates the check sum from the string.
+        /// </param>
+        /// <param name="checksum">
+        /// <see cref="CheckSum"/> to use for creating the check sum.
+        /// </param>
         public CheckSumAppender(string separator, CheckSum checksum)
         {
             mySeparator = separator ?? throw new ArgumentNullException(nameof(separator));
             myChecksum = checksum ?? throw new ArgumentNullException(nameof(checksum));
         }
 
+        /// <summary>
+        /// Appends the check sum to the specified string.
+        /// </summary>
+        /// <param name="inputToAppendCheckSum">
+        /// The string to append the check sum to.
+        /// </param>
+        /// <returns>
+        /// The specified string + the separator + the check sum.
+        /// </returns>
         public string Append(string inputToAppendCheckSum)
         {
             var checkSum = GetCheckSum(inputToAppendCheckSum);
             return inputToAppendCheckSum + mySeparator + checkSum;
         }
 
+        /// <summary>
+        /// Verifies if the specified string (which includes the check sum) is valid.
+        /// </summary>
+        /// <param name="inputWithCheckSumToVerify">
+        /// The string + separator + check sum.
+        /// </param>
+        /// <returns>
+        /// True if the check sum is valid; otherwise false.
+        /// </returns>
         public bool Verify(string inputWithCheckSumToVerify)
         {
             if (inputWithCheckSumToVerify == null)

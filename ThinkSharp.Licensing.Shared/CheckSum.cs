@@ -7,11 +7,23 @@ using System.Text;
 
 namespace ThinkSharp
 {
+    /// <summary>
+    /// Class for creating check sum for an array of bytes.
+    /// </summary>
     public class CheckSum
     {
         private readonly char[] myValidCharacters;
         private readonly int myLenght;
 
+        /// <summary>
+        /// Creates a new instance of the class.
+        /// </summary>
+        /// <param name="supportedCharacters">
+        /// List of supported characters for the check sum.
+        /// </param>
+        /// <param name="length">
+        /// The lenght of the check sum.
+        /// </param>
         public CheckSum(char[] supportedCharacters, int length)
         {
             if (supportedCharacters == null)
@@ -25,12 +37,31 @@ namespace ThinkSharp
             myLenght = length;
         }
 
+        /// <summary>
+        /// Creates a new instance of the class.
+        /// Check sum consists of the characters [A-Z] and [0-9].
+        /// </summary>
+        /// <param name="length">
+        /// The length of the check sum.
+        /// </param>
         public CheckSum(int length)
             : this(Constants.ValidCharacters.ToCharArray(), length)
         { }
 
+        /// <summary>
+        /// Gets the length of the check sum.
+        /// </summary>
         public int Length => myLenght;
 
+        /// <summary>
+        /// Creates the check sum for the specified byte array.
+        /// </summary>
+        /// <param name="bytes">
+        /// The byte array to create the check sum for.
+        /// </param>
+        /// <returns>
+        /// A string that represents the check sum of the specified byte array.
+        /// </returns>
         public string Create(byte[] bytes)
         {
             bytes = AdjustSize(bytes, myLenght);
