@@ -14,7 +14,7 @@
 
 ## Installation
 
-FeatureTour can be installed via [Nuget](https://www.nuget.org/packages/Thinksharp.Licensing)
+ThinkSharp.Licensing can be installed via [Nuget](https://www.nuget.org/packages/Thinksharp.Licensing)
 
       Install-Package ThinkSharp.Licensing 
 
