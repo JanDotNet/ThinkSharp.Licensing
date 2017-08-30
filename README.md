@@ -103,3 +103,8 @@ A serial number is random identifier with an 3 character alpha-numeric applicati
     SigningKeyPair pair = Lic.KeyGenerator.GenerateRsaKeyPair();
     Console.WriteLine(pair.PrivateKey);
     Console.WriteLine(pair.PublicKey);
+    
+## Donation
+If you like ThinkSharp.Licensing and use it in your project(s), feel free to give me a cup of coffee :) 
+
+[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=MSBFDUU5UUQZL)
