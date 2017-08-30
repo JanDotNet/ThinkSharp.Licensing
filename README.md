@@ -12,9 +12,15 @@
 * Creation / verification of serial numbers
 * Creation / verification of signing of licenses
 
-## Hardware Identifier
+## Installation
 
-### Description
+FeatureTour can be installed via [Nuget](https://www.nuget.org/packages/Thinksharp.Licensing)
+
+      Install-Package ThinkSharp.Licensing 
+
+## API Reference
+
+### Hardware Identifier
 
 The hardware identifier is an identifier that derives from 4 characteristics of the computer's hardware (processor ID, serial number of BIOS and so on). The identifier may look like:
 
@@ -22,7 +28,7 @@ The hardware identifier is an identifier that derives from 4 characteristics of 
 
 Each characteristic is encoded in one of the 8-character parts. The hardware identifier will be accepted if at least 2 of the 4 characteristics are equal. That ensures, that the license doesn't become invalid if e.g. the processor of the computer changed. The last 4-character part is a check sum that can be used to validate the hardware identifier. 
 
-### Usage
+#### Usage
 
     // Create:
     string hardwareIdentifier = HardwareIdentifier.ForCurrentComputer();
@@ -35,15 +41,14 @@ Each characteristic is encoded in one of the 8-character parts. The hardware ide
     if (!HardwareIdentifier.IsValidForCurrentComputer(hardwareIdentifier))
         Console.WriteLine("Entered license is not valid for this computer.");
     
-## Serial Number
+### Serial Number
 
-### Description
 
 A serial number is random identifier with an 3 character alpha-numeric application code and a check sum. It looks like SNXXX-YYYY-YYYY-YYYY-ZZZ where XXX is the application code, YYYY is the random part and ZZZ is the check sum. E.g.: 
 
     SNABC-D156-KYJF-C4M5-1H96    
 
-### Usage
+#### Usage
 
     // ABC = application code
     string serialNumber = SerialNumber.Create("ABC");
@@ -52,7 +57,7 @@ A serial number is random identifier with an 3 character alpha-numeric applicati
     if (!SerialNumber.IsCheckSumValid(serialNumber))
         Console.WriteLine("Entered serial number is not valid.");
         
-## Signed License
+### Signed License
 
 ## Create signed license
 
@@ -103,6 +108,10 @@ A serial number is random identifier with an 3 character alpha-numeric applicati
     SigningKeyPair pair = Lic.KeyGenerator.GenerateRsaKeyPair();
     Console.WriteLine(pair.PrivateKey);
     Console.WriteLine(pair.PublicKey);
+    
+## License
+
+ThinkSharp.Licensing is released under [The MIT license (MIT)](LICENSE.TXT)
     
 ## Donation
 If you like ThinkSharp.Licensing and use it in your project(s), feel free to give me a cup of coffee :) 
