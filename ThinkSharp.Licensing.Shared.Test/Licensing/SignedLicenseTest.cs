@@ -25,14 +25,14 @@ namespace ThinkSharp.Licensing
         {
             var license = new SignedLicense(HardwareIdentifier.NoHardwareIdentifier, "SerialNumber", DateTime.Now, DateTime.Now + TimeSpan.FromDays(10), CreateProperties());
             license.Sign(new LengthSigner());
-            var licPlainText = license.Serialize(true);
-            var licEncrypted = license.Serialize(false);
+            var licPlainText = license.SerializeAsPlainText();
+            var licEncrypted = license.Serialize();
 
             var licensePlainText = SignedLicense.Deserialize(licPlainText);
             var licenseEncrypted = SignedLicense.Deserialize(licEncrypted);
 
-            Assert.AreEqual(licensePlainText.Serialize(true), licenseEncrypted.Serialize(true));
-            Assert.AreEqual(licensePlainText.Serialize(false), licenseEncrypted.Serialize(false));
+            Assert.AreEqual(licensePlainText.SerializeAsPlainText(), licenseEncrypted.SerializeAsPlainText());
+            Assert.AreEqual(licensePlainText.Serialize(), licenseEncrypted.Serialize());
         }
 
         [TestMethod]

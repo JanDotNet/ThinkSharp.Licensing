@@ -66,18 +66,18 @@ namespace ThinkSharp.Licensing
             return ReadLicenseFile(lines);
         }
 
-        public string Serialize(bool plainText = false)
+        public string SerializeAsPlainText()
         {
             var sb = new StringBuilder();
             WriteLicenseProperties(sb);
             WriteSignature(sb);
 
-            var licenseText = sb.ToString();
+            return sb.ToString();
+        }
 
-            if (plainText)
-                return licenseText;
-
-            return SignedLicenseEncryption.Encrypt(licenseText);
+        public string Serialize()
+        {
+            return SignedLicenseEncryption.Encrypt(SerializeAsPlainText());
         }
 
         private static SignedLicense ReadLicenseFile(string[] lines)

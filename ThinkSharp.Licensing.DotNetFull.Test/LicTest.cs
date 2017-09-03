@@ -34,7 +34,7 @@ namespace ThinkSharp.Licensing.Shared.Test
             verifiedLicense = Lic.Verifier
                 .WithRsaPublicKey(LicTest.PublicKey)
                 .WithApplicationCode("ABC")
-                .LoadAndVerify(license.Serialize(true));
+                .LoadAndVerify(license.SerializeAsPlainText());
 
             Assert.AreEqual(license.Serialize(), verifiedLicense.Serialize());
         }
@@ -59,7 +59,7 @@ namespace ThinkSharp.Licensing.Shared.Test
             verifiedLicense = Lic.Verifier
                 .WithRsaPublicKey(LicTest.PublicKey)
                 .WithoutApplicationCode()
-                .LoadAndVerify(license.Serialize(true));
+                .LoadAndVerify(license.SerializeAsPlainText());
 
             Assert.AreEqual(license.Serialize(), verifiedLicense.Serialize());
         }

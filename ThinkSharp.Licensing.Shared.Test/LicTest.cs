@@ -80,8 +80,8 @@ namespace ThinkSharp.Licensing.Shared.Test
                 .WithoutApplicationCode()
                 .LoadAndVerify(licenseText);
 
-            var plainText = license.Serialize(true);
-            var encrypted = license.Serialize(false);
+            var plainText = license.SerializeAsPlainText();
+            var encrypted = license.Serialize();
 
             Assert.AreEqual(expectedLicensePlain, plainText);
             Assert.AreEqual(expectedLicenseEncrypted, encrypted);
