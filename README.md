@@ -45,8 +45,7 @@ The static `Lic` class is the entry point for the fluent API that allows to work
         .WithSerialNumber(SerialNumber.Create("ABC"))                    // .WithoutSerialNumber()
         .WithoutExpiration()                                             // .ExpiresIn(TimeSpan), .ExpiresOn(DateTime)
         .WithProperty("Name", "Bill Gates")
-        .WithProperty("Company", "Microsoft")
-	//... other key value pairs
+        .WithProperty("Company", "Microsoft")                            //... other key value pairs
         .SignAndCreate();
 	
 **Serialize License**
