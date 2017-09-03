@@ -10,7 +10,7 @@
 
 * Creation / verification of hardware identifiers (Windows only)
 * Creation / verification of serial numbers
-* Creation / verification of signing of licenses
+* Creation / verification of signed licenses
 
 ## Installation
 
@@ -26,7 +26,7 @@ The hardware identifier is an identifier that derives from 4 characteristics of 
 
     5BED5GAB-E5TGXKGK-01SI8MFF-7T099W78-SRH4
 
-Each characteristic is encoded in one of the 8-character parts. The hardware identifier will be accepted if at least 2 of the 4 characteristics are equal. That ensures, that the license doesn't become invalid if e.g. the processor of the computer changed. The last 4-character part is a check sum that can be used to validate the hardware identifier. 
+Each characteristic is encoded in one of first 4 parts (8 charachters). The hardware identifier will be accepted if at least 2 of the 4 characteristics are equal. That ensures, that the license doesn't become invalid if e.g. the processor of the computer changed. The last part (4 characters) is a check sum that can be used to detect errors in the the hardware identifier. 
 
 #### Usage
 
@@ -35,7 +35,7 @@ Each characteristic is encoded in one of the 8-character parts. The hardware ide
     
     // Validate Checksum
     if (!HardwareIdentifier.IsCheckSumValid(hardwareIdentifier))
-        Console.WriteLine("Entered hardware identifier is not valid.");
+        Console.WriteLine("Entered hardware identifier has errors.");
         
     // Validate for current computer
     if (!HardwareIdentifier.IsValidForCurrentComputer(hardwareIdentifier))
@@ -44,7 +44,7 @@ Each characteristic is encoded in one of the 8-character parts. The hardware ide
 ### Serial Number
 
 
-A serial number is random identifier with an 3 character alpha-numeric application code and a check sum. It looks like SNXXX-YYYY-YYYY-YYYY-ZZZ where XXX is the application code, YYYY is the random part and ZZZ is the check sum. E.g.: 
+A serial number is an identifier with an alpha-numeric application code (3 character), some random characters and a check sum. It looks like SNXXX-YYYY-YYYY-YYYY-ZZZ where XXX is the application code, YYYY is the random part and ZZZ is the check sum. E.g.: 
 
     SNABC-D156-KYJF-C4M5-1H96    
 
