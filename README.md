@@ -136,6 +136,10 @@ A serial number is an identifier with an alpha-numeric application code (3 chara
 ## License
 
 ThinkSharp.Licensing is released under [The MIT license (MIT)](LICENSE.TXT)
+
+## Versioning
+
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/JanDotNet/ThinkSharp.Licensing/tags). 
     
 ## Donation
 If you like ThinkSharp.Licensing and use it in your project(s), feel free to give me a cup of coffee :) 
