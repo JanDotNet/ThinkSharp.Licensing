@@ -6,29 +6,25 @@ using System.Text;
 using ThinkSharp.Licensing;
 
 namespace ThinkSharp.Licensing
-{    public class Test
-    {
-        public void Test123()
-        {           
-            var signedLicense = Lic.Builder
-                .WithRsaPrivateKey("privateKey")
-                .WithHardwareIdentifier(HardwareIdentifier.ForCurrentComputer()) // WithoutHardwareIdentifier
-                .WithSerialNumber(SerialNumber.Create("ABV"))                    // WithoutSerialNumber
-                .ExpiresIn(TimeSpan.FromDays(12))                                // WithoutExpiration
-                .WithProperty("test", "test")
-                .SignAndCreate();
-
-            signedLicense = Lic.Verifier
-                .WithRsaPublicKey("privateKey")
-                .WithApplicationCode("ABC")
-                .LoadAndVerify("LicenseString");
-        }
-    }
+{
+    /// <summary>
+    /// Entry point of fluent API for working with licenses.
+    /// </summary>
     public static class Lic
     {
+        /// <summary>
+        /// Creates a new builder for creating signed license objects.
+        /// </summary>
         public static IBuilder_Signer Builder => new LicBuilder();
+
+        /// <summary>
+        /// Creates a new key generator for creating private / public key pairs.
+        /// </summary>
         public static IKeyGenerator KeyGenerator => new LicKeyGenerator();
 
+        /// <summary>
+        /// Creates a new verifier for verify license strings.
+        /// </summary>
         public static IVerifier_Signer Verifier => new LicVerifier();
     }
 
@@ -40,7 +36,7 @@ namespace ThinkSharp.Licensing
         SignedLicense IVerifier_VerifyLoad.LoadAndVerify(string licenseString)
         {
             var license = SignedLicense.Deserialize(licenseString);
-            // verfiy signature
+            // verify signature
             license.Verify(mySigner);
             // verify application code
             if (!SerialNumber.IsApplicationCodeValid(license.SerialNumber, myApplicationCode))
@@ -74,17 +70,44 @@ namespace ThinkSharp.Licensing
 
     public interface IVerifier_Signer
     {
+        /// <summary>
+        /// Use the specified signer.
+        /// </summary>
+        /// <param name="signer">
+        /// The <see cref="ISigner"/> implementation to use.
+        /// </param>
+        /// <returns></returns>
         IVerifier_ApplicationCode WithSigner(ISigner signer);
     }
 
     public interface IVerifier_ApplicationCode
     {
+        /// <summary>
+        /// Verify that the serial number has the specified application code.
+        /// </summary>
+        /// <param name="threeLetterApplicationCode">
+        /// The application code to check.
+        /// </param>
+        /// <returns></returns>
         IVerifier_VerifyLoad WithApplicationCode(string threeLetterApplicationCode);
+
+        /// <summary>
+        /// The signed license was created without serial number.
+        /// </summary>
+        /// <returns></returns>
         IVerifier_VerifyLoad WithoutApplicationCode();
     }
 
     public interface IVerifier_VerifyLoad
     {
+        /// <summary>
+        /// Loads the specified license and verifies it.
+        /// NOTE: If the license is not valid, an exception will be thrown.
+        /// </summary>
+        /// <param name="license">
+        /// The serialized license string (either encrypted and base64 encoded or plain text)
+        /// </param>
+        /// <returns></returns>
         SignedLicense LoadAndVerify(string license);
     }
 }

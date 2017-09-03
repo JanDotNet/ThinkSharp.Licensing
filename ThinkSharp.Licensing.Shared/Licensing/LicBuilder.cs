@@ -101,31 +101,97 @@ namespace ThinkSharp.Licensing
 
     public interface IBuilder_Signer
     {
+        /// <summary>
+        /// Use the specified <see cref="ISigner"/> implementation for signing.
+        /// </summary>
+        /// <param name="signer">
+        /// The <see cref="ISigner"/> implementation to use for signing.
+        /// </param>
+        /// <returns></returns>
         IBuilder_HardwareIdentifier WithSigner(ISigner signer);
     }
 
     public interface IBuilder_HardwareIdentifier
     {
-        IBuilder_SerialNumber WithHardwareIdentifier(string hardwareKey);
+        /// <summary>
+        /// Create the license with the specified hardware identifier.
+        /// See also <see cref="HardwareIdentifier"/>.
+        /// </summary>
+        /// <param name="hardwareIdentifier">
+        /// The hardware identifier to use.
+        /// </param>
+        /// <returns></returns>
+        IBuilder_SerialNumber WithHardwareIdentifier(string hardwareIdentifier);
+        /// <summary>
+        /// Create the license without hardware identifier.
+        /// </summary>
+        /// <returns></returns>
         IBuilder_SerialNumber WithoutHardwareIdentifier();
     }
 
     public interface IBuilder_SerialNumber
     {
+        /// <summary>
+        /// Create the license with the specified serial number.
+        /// See also <see cref="SerialNumber"/>.
+        /// </summary>
+        /// <param name="serialNumber">
+        /// The serial number to use.
+        /// </param>
+        /// <returns></returns>
         IBuilder_Expiration WithSerialNumber(string serialNumber);
+        /// <summary>
+        /// Create the license without serial number.
+        /// </summary>
+        /// <returns></returns>
         IBuilder_Expiration WithoutSerialNumber();
     }
 
     public interface IBuilder_Expiration
     {
+        /// <summary>
+        /// The license expires on the specified date time.
+        /// </summary>
+        /// <param name="dateTime">
+        /// The date when the license expires.
+        /// </param>
+        /// <returns></returns>
         IBuilder_Properties ExpiresOn(DateTime dateTime);
+        /// <summary>
+        /// The license expires after the specified time span.
+        /// </summary>
+        /// <param name="timeSpan">
+        /// The period after which the license expires.
+        /// </param>
+        /// <returns></returns>
         IBuilder_Properties ExpiresIn(TimeSpan timeSpan);
+        /// <summary>
+        /// The license does not expire.
+        /// </summary>
+        /// <returns></returns>
         IBuilder_Properties WithoutExpiration();
     }
 
     public interface IBuilder_Properties
     {
+        /// <summary>
+        /// Adds the key value pair to the license information.
+        /// </summary>
+        /// <param name="key">
+        /// The key to add. NOTE: The key must not contain ':'.
+        /// </param>
+        /// <param name="value">
+        /// The value to add.
+        /// </param>
+        /// <returns></returns>
         IBuilder_Properties WithProperty(string key, string value);
+
+        /// <summary>
+        /// Signs the license data and creates the <see cref="SignedLicense"/> object.
+        /// </summary>
+        /// <returns>
+        /// The signed <see cref="SignedLicense"/> object.
+        /// </returns>
         SignedLicense SignAndCreate();
     }
 }

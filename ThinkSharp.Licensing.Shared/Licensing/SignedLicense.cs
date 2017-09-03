@@ -10,6 +10,9 @@ using ThinkSharp.Helper;
 
 namespace ThinkSharp.Licensing
 {
+    /// <summary>
+    /// Class that encapsulates some license related information and a signature for verifying it
+    /// </summary>
     public sealed class SignedLicense
     {
         //  .ctor
@@ -36,11 +39,26 @@ namespace ThinkSharp.Licensing
         //  Properties
         // ////////////////////////////////////////////////////////////////////
 
+        /// <summary>
+        /// Date of the issuing (when the license was created)
+        /// </summary>
         public DateTime IssueDate { get; }
+        /// <summary>
+        /// Date of the expiration (may be <see cref="DateTime.MaxValue"/> for licenses without expiration)
+        /// </summary>
         public DateTime ExpirationDate { get; }
+        /// <summary>
+        /// Optional: A serial number (See also <see cref="SerialNumber"/>)
+        /// </summary>
         public string SerialNumber { get; }
+        /// <summary>
+        /// Optional: A hardware identifier (See also <see cref="HardwareIdentifier"/>)
+        /// </summary>
         internal string HardwareIdentifier { get; }
         private string Signature { get; set; }
+        /// <summary>
+        /// List of custom key value pairs that are part of the license.
+        /// </summary>
         public IDictionary<string, string> Properties { get; }
 
         //  Methods
@@ -66,6 +84,10 @@ namespace ThinkSharp.Licensing
             return ReadLicenseFile(lines);
         }
 
+        /// <summary>
+        /// Serializes the license as plain text (license information are readable by humans).
+        /// </summary>
+        /// <returns></returns>
         public string SerializeAsPlainText()
         {
             var sb = new StringBuilder();
@@ -75,6 +97,10 @@ namespace ThinkSharp.Licensing
             return sb.ToString();
         }
 
+        /// <summary>
+        /// Serializes the license as encrypted base64 encoded text.
+        /// </summary>
+        /// <returns></returns>
         public string Serialize()
         {
             return SignedLicenseEncryption.Encrypt(SerializeAsPlainText());
