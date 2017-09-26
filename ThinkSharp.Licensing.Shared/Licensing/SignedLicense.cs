@@ -126,7 +126,7 @@ namespace ThinkSharp.Licensing
 
                 return new SignedLicense(hardwareIdentifier, serialNumber, issueDate, expirationDate, properties, signature);
             }
-            catch (Exception ex)
+            catch
             {
                 ThrowInvalidFormatException();
                 return null;

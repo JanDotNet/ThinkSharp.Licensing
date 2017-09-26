@@ -27,7 +27,7 @@ namespace ThinkSharp.Licensing
                     foreach (PropertyData pc in share.Properties)
                         sb.Append(pc.Value);
             }
-            catch (Exception ex)
+            catch
             {
                 sb.Append(property).Append(type);
             }
