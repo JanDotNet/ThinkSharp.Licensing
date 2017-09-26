@@ -61,6 +61,21 @@ namespace ThinkSharp.Licensing
         /// </summary>
         public IDictionary<string, string> Properties { get; }
 
+        /// <summary>
+        /// Gets a value that indicates if the license has a serial number.
+        /// </summary>
+        public bool HasSerialNumber => SerialNumber != Licensing.SerialNumber.NoSerialNumber;
+
+        /// <summary>
+        /// Gets a value that indicates if the license has a hardware identifier.
+        /// </summary>
+        public bool HasHardwareIdentifier => HardwareIdentifier != Licensing.HardwareIdentifier.NoHardwareIdentifier;
+
+        /// <summary>
+        /// Gets a value that indicates if the license expires.
+        /// </summary>
+        public bool HasExpirationDate => ExpirationDate != DateTime.MaxValue;
+
         //  Methods
         // ////////////////////////////////////////////////////////////////////
 

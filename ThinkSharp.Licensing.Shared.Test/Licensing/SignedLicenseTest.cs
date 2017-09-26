@@ -113,6 +113,44 @@ namespace ThinkSharp.Licensing
             newFile.Verify(new HashCodeSigner());
         }
 
+        [TestMethod]
+        public void TestHasXXXProperties_True()
+        {
+            var key = "BwIAAACkAABSU0EyAAQAAAEAAQALrzxPFiBp4EN5aeLtZZ4sTvcfYn+fSpmxJvhSUxP/9fm+uaWwJ+n7+jc4Zf2tB+WDulTJo5ryauHgKjx5MHMmWNLr77mD3ws11BC61VDt65fIY4DLsvn49ZYajJy3oUwDvyEsnGArUH3IUhCTv/OWbHovmb69Xlg90mEcsIhOm2WKki+1cc7ZeBANtR57SMLv3qDH+DQqTxBb4UOHmJs4YfrMjqOEXBg0pDLT4HHzIz7WVu9ltKJdQZn626aGdMivhKQqxiJj3YsdFiLgM4BZk9ZGCxI2AJLp9Q/IRwqGKg4T0NlNWbqH1P5Zvq2nxVxSQEI/ARpUK1C8CIsnXVfGyRNp5nkFlM05O2HXhwLWhoHn5Dm76FMz5mClkFaRe8pK113sZK0Tw6sEVCrFMXeaiXSGK9xZifvnioOq9jRgp1fCpc5vLSE4VFGZ2vl89hrsfPKAIDIx5vXgNfOGjJXoDfHUkurih1qBG5Aiie5bD8e+LPVQ7jkM9CzFHRC756n1yAwSLUiv2cpbXD/YhZuHOOIljWjgcHKV9b9eyQXUilC8CQOE/1JLUHWLskhRH6NKRo1HVPxsuZpKLfkWEqti6TF8A4gllaJdjJEqq226EaXaRvP2RoqxjRBUKeT/NBN4focrEmjQpMKTAhMmpIutsXEqLbcXbR+0gBbvdIoEcEBbgizGJK8NJtWnli6qh4EEuaqtBYXkP0Io/bZJsc+WuWpHn9lXWIy/cPDTik+uEgbPF5MZEcmLVKJEsdnpcEc=";
+
+            var lic = Lic.Builder
+                .WithRsaPrivateKey(key)
+                .WithHardwareIdentifier("HardwareIdentifier")
+                .WithSerialNumber(SerialNumber.Create("GSA"))
+                .ExpiresIn(TimeSpan.FromDays(100))
+                .WithProperty("Name", "Bill Gates")
+                .WithProperty("Company", "Microsoft")
+                .SignAndCreate();
+
+            Assert.IsTrue(lic.HasExpirationDate);
+            Assert.IsTrue(lic.HasHardwareIdentifier);
+            Assert.IsTrue(lic.HasSerialNumber);
+        }
+
+        [TestMethod]
+        public void TestHasXXXProperties_False()
+        {
+            var key = "BwIAAACkAABSU0EyAAQAAAEAAQALrzxPFiBp4EN5aeLtZZ4sTvcfYn+fSpmxJvhSUxP/9fm+uaWwJ+n7+jc4Zf2tB+WDulTJo5ryauHgKjx5MHMmWNLr77mD3ws11BC61VDt65fIY4DLsvn49ZYajJy3oUwDvyEsnGArUH3IUhCTv/OWbHovmb69Xlg90mEcsIhOm2WKki+1cc7ZeBANtR57SMLv3qDH+DQqTxBb4UOHmJs4YfrMjqOEXBg0pDLT4HHzIz7WVu9ltKJdQZn626aGdMivhKQqxiJj3YsdFiLgM4BZk9ZGCxI2AJLp9Q/IRwqGKg4T0NlNWbqH1P5Zvq2nxVxSQEI/ARpUK1C8CIsnXVfGyRNp5nkFlM05O2HXhwLWhoHn5Dm76FMz5mClkFaRe8pK113sZK0Tw6sEVCrFMXeaiXSGK9xZifvnioOq9jRgp1fCpc5vLSE4VFGZ2vl89hrsfPKAIDIx5vXgNfOGjJXoDfHUkurih1qBG5Aiie5bD8e+LPVQ7jkM9CzFHRC756n1yAwSLUiv2cpbXD/YhZuHOOIljWjgcHKV9b9eyQXUilC8CQOE/1JLUHWLskhRH6NKRo1HVPxsuZpKLfkWEqti6TF8A4gllaJdjJEqq226EaXaRvP2RoqxjRBUKeT/NBN4focrEmjQpMKTAhMmpIutsXEqLbcXbR+0gBbvdIoEcEBbgizGJK8NJtWnli6qh4EEuaqtBYXkP0Io/bZJsc+WuWpHn9lXWIy/cPDTik+uEgbPF5MZEcmLVKJEsdnpcEc=";
+
+            var lic = Lic.Builder
+                .WithRsaPrivateKey(key)
+                .WithoutHardwareIdentifier()
+                .WithoutSerialNumber()
+                .WithoutExpiration()
+                .WithProperty("Name", "Bill Gates")
+                .WithProperty("Company", "Microsoft")
+                .SignAndCreate();
+
+            Assert.IsFalse(lic.HasExpirationDate);
+            Assert.IsFalse(lic.HasHardwareIdentifier);
+            Assert.IsFalse(lic.HasSerialNumber);
+        }
+
 
         private static void AssertDefaultPropertiesAreValid(SignedLicense file)
         {
