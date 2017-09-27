@@ -22,7 +22,7 @@ ThinkSharp.Licensing can be installed via [Nuget](https://www.nuget.org/packages
 
 ### Singed License
 
-A `SignedLicense` is class that encapsulates some license related information and a signature for verifying it. The license can be serialized / deserialized for storing it on the client. It has following public properties:
+The class `SignedLicense` encapsulates some license related information and a signature for verifying it. The license can be serialized / deserialized for storing it on the client. It has following public properties:
 
 * **IssueDate:** date of the issuing (when the license was created)
 * **ExpirationDate:** date of the expiration (may be `DateTime.MaxValue` for licenses without expiration)
