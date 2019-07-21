@@ -27,7 +27,7 @@ The class `SignedLicense` encapsulates some license related information and a si
 * **IssueDate:** date of the issuing (when the license was created)
 * **ExpirationDate:** date of the expiration (may be `DateTime.MaxValue` for licenses without expiration)
 * **SerialNumber** Optional: a serial number (See class `SerialNumber` below)
-* **Properties** `IDictionary<string, string` with custom key value pairs
+* **Properties** `IDictionary<string, string>` with custom key value pairs
 
 The static `Lic` class is the entry point for the fluent API that allows to work with signed licenses. It has the following static properties:
 
