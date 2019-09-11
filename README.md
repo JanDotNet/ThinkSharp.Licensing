@@ -151,6 +151,7 @@ if (!SerialNumber.IsCheckSumValid(serialNumber))
 {
     Console.WriteLine("Entered serial number is not valid.");
 }
+```
           
 ## License
 
