@@ -39,62 +39,72 @@ The static `Lic` class is the entry point for the fluent API that allows to work
 
 **Create signed licenses**
 
-    SignedLicense license = Lic.Builder
-        .WithRsaPrivateKey(pk)                                           // .WithSigner(ISigner)
-        .WithHardwareIdentifier(HardwareIdentifier.ForCurrentComputer()) // .WithoutHardwareIdentifier()
-        .WithSerialNumber(SerialNumber.Create("ABC"))                    // .WithoutSerialNumber()
-        .WithoutExpiration()                                             // .ExpiresIn(TimeSpan), .ExpiresOn(DateTime)
-        .WithProperty("Name", "Bill Gates")
-        .WithProperty("Company", "Microsoft")                            //... other key value pairs
-        .SignAndCreate();
-	
+```csharp
+SignedLicense license = Lic.Builder
+    .WithRsaPrivateKey(pk)                                           // .WithSigner(ISigner)
+    .WithHardwareIdentifier(HardwareIdentifier.ForCurrentComputer()) // .WithoutHardwareIdentifier()
+    .WithSerialNumber(SerialNumber.Create("ABC"))                    // .WithoutSerialNumber()
+    .WithoutExpiration()                                             // .ExpiresIn(TimeSpan), .ExpiresOn(DateTime)
+    .WithProperty("Name", "Bill Gates")
+    .WithProperty("Company", "Microsoft")                            //... other key value pairs
+    .SignAndCreate();
+```
+
 **Serialize License**
 
 The `SignedLicense` can be serialized as encrypted base64 encoded string (default):
 
-    var encryptedText = license.Serialize();
-    
-    // FW9JbxVRYW8hcWBVZ3VHbGosEBxfYhlMZmshHHUxGBVbHBksc3
-    // 9EHywLc2NNaWIsE39YaAxFbXo7BhhSYxwhZmBJYSAGGxkuEhUj
-    // GREwFw08GxsxEBc8GywLER8jGBAuGRQ1EgEzExc5Ehs0GSAGZU
-    // BsRRdOQk1tAGptX0RyLSdPRExxQUN1EWxoQ19jWE5nVCAGahJm
-    // Ek8/GhFwSwY7ehk3Sm4+cRk4EFh4GVkydFh0U0NURAZUWBVnbW
-    // 9eXQ5JTWtgElI4cHxaBFtEQ2ZBGlFiSmR5bWsuEHRfAENAYx8+
-    // U09vQmM+Tg5SakFmcmxKFWM9YQ4yR2NVSVdidUwnE1BuS0BLeX
-    // tbU0tifnNDQ25teVZjcXl2H2pQVnk7QEBTC19FXFRGeGs6T1FX
-    // SUR0YmprFmknHRA5VBpOeUdYHQ==
+```csharp
+var encryptedText = license.Serialize();
+
+// FW9JbxVRYW8hcWBVZ3VHbGosEBxfYhlMZmshHHUxGBVbHBksc3
+// 9EHywLc2NNaWIsE39YaAxFbXo7BhhSYxwhZmBJYSAGGxkuEhUj
+// GREwFw08GxsxEBc8GywLER8jGBAuGRQ1EgEzExc5Ehs0GSAGZU
+// BsRRdOQk1tAGptX0RyLSdPRExxQUN1EWxoQ19jWE5nVCAGahJm
+// Ek8/GhFwSwY7ehk3Sm4+cRk4EFh4GVkydFh0U0NURAZUWBVnbW
+// 9eXQ5JTWtgElI4cHxaBFtEQ2ZBGlFiSmR5bWsuEHRfAENAYx8+
+// U09vQmM+Tg5SakFmcmxKFWM9YQ4yR2NVSVdidUwnE1BuS0BLeX
+// tbU0tifnNDQ25teVZjcXl2H2pQVnk7QEBTC19FXFRGeGs6T1FX
+// SUR0YmprFmknHRA5VBpOeUdYHQ==
+```
 
 or as plain text string:
 
-    var plainText = license.SerializePlainText();
-    
-    // 5BED5GAB-E5TGXKGK-01SI8MFF-7T099W78-SRH4
-    // SNABC-3RTC-DMW7-9SC1-MAHA
-    // 08/28/2017 00:00:00
-    // 12/31/9999 23:59:59
-    // Name:Bill Gates
-    // Company:Microsoft
-    // A3g2b310qk+7Q86jC2Z890ut2x3TuxxbUd+Xs4fMBRv/HmFl9s
-    // 9PQV/zEcKM1pcjIuFJ/0YS+bAC22xnnbN2e/SJljYMK5N1J/3g
-    // NYbvcUa+8qokmGRZZsfnURBcCaRwbQTz4KQvT7kaR+rIwuGXF6
-    // dpViixIKj6D+618t7BRfY=
-	
+```csharp
+var plainText = license.SerializePlainText();
+
+// 5BED5GAB-E5TGXKGK-01SI8MFF-7T099W78-SRH4
+// SNABC-3RTC-DMW7-9SC1-MAHA
+// 08/28/2017 00:00:00
+// 12/31/9999 23:59:59
+// Name:Bill Gates
+// Company:Microsoft
+// A3g2b310qk+7Q86jC2Z890ut2x3TuxxbUd+Xs4fMBRv/HmFl9s
+// 9PQV/zEcKM1pcjIuFJ/0YS+bAC22xnnbN2e/SJljYMK5N1J/3g
+// NYbvcUa+8qokmGRZZsfnURBcCaRwbQTz4KQvT7kaR+rIwuGXF6
+// dpViixIKj6D+618t7BRfY=
+```
+
 **Verify License**
 
 For deserializing the license, the `Lic.Verifier` has to be used. If the license can not be deserialized hor has no valid signature, an exception is thrown.
 
-    SignedLicense license = Lic.Verifier
-		    .WithRsaPublicKey(publicKey)       // .WithSigner(ISigner)
-		    .WithApplicationCode("ABC")        // .WithoutApplicationCode
-		    .LoadAndVerify(licenseText);
+```csharp
+SignedLicense license = Lic.Verifier
+			   .WithRsaPublicKey(publicKey)       // .WithSigner(ISigner)
+		    	   .WithApplicationCode("ABC")        // .WithoutApplicationCode
+		           .LoadAndVerify(licenseText);
+```
 		    
 **Create public/private key Pair**
 
 A public and private key pair can be generated using the `Lic.KeyGenerator` object:
 
-    SigningKeyPair pair = Lic.KeyGenerator.GenerateRsaKeyPair();
-    Console.WriteLine(pair.PrivateKey);
-    Console.WriteLine(pair.PublicKey);
+```csharp
+SigningKeyPair pair = Lic.KeyGenerator.GenerateRsaKeyPair();
+Console.WriteLine(pair.PrivateKey);
+Console.WriteLine(pair.PublicKey);
+```
 
 ### Hardware Identifier
 
@@ -106,17 +116,23 @@ Each characteristic is encoded in one of first 4 parts (8 charachters). The hard
 
 #### Usage
 
-    // Create:
-    string hardwareIdentifier = HardwareIdentifier.ForCurrentComputer();
-    
-    // Validate Checksum
-    if (!HardwareIdentifier.IsCheckSumValid(hardwareIdentifier))
-        Console.WriteLine("Entered hardware identifier has errors.");
+```csharp
+// Create:
+string hardwareIdentifier = HardwareIdentifier.ForCurrentComputer();
+
+// Validate Checksum
+if (!HardwareIdentifier.IsCheckSumValid(hardwareIdentifier))
+{
+    Console.WriteLine("Entered hardware identifier has errors.");
+}
         
-    // Validate for current computer
-    if (!HardwareIdentifier.IsValidForCurrentComputer(hardwareIdentifier))
-        Console.WriteLine("Entered license is not valid for this computer.");
-    
+// Validate for current computer
+if (!HardwareIdentifier.IsValidForCurrentComputer(hardwareIdentifier))
+{
+    Console.WriteLine("Entered license is not valid for this computer.");
+}
+```
+
 ### Serial Number
 
 
@@ -126,12 +142,15 @@ A serial number is an identifier with an alpha-numeric application code (3 chara
 
 #### Usage
 
-    // ABC = application code
-    string serialNumber = SerialNumber.Create("ABC");
+```csharp
+// ABC = application code
+string serialNumber = SerialNumber.Create("ABC");
     
-    // Validate CheckSum
-    if (!SerialNumber.IsCheckSumValid(serialNumber))
-        Console.WriteLine("Entered serial number is not valid.");
+// Validate CheckSum
+if (!SerialNumber.IsCheckSumValid(serialNumber))
+{
+    Console.WriteLine("Entered serial number is not valid.");
+}
           
 ## License
 
