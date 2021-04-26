@@ -36,12 +36,7 @@ namespace ThinkSharp.Licensing.Licensing
 
         static HardwareIdentifier()
         {
-            var interfaceType = typeof(IComputerCharacteristics);
-            var currentAssembly = typeof(HardwareIdentifier).Assembly;
-            var type = currentAssembly.GetTypes().Where(p => interfaceType.IsAssignableFrom(p) && p.IsClass).FirstOrDefault();
-
-            if (type != null)
-                theComputerCharacteristics = (IComputerCharacteristics)Activator.CreateInstance(type);
+            theComputerCharacteristics = new DefaultComputerCharacteristics();
         }
 
         /// <summary>
@@ -70,7 +65,7 @@ namespace ThinkSharp.Licensing.Licensing
         public static string ForCurrentComputer()
         {
             if (theComputerCharacteristics == null)
-                throw new NotSupportedException("Creating hardware id for current computer is not supported for DotNetStandard. Please use 'HardwareIdentifier.SetComputerCharacteristics' to set a plattform specific implementation of 'IComputerCharacteristics'.");
+                throw new NotSupportedException("No ComputerCharacteristics service is set. Please use 'HardwareIdentifier.SetComputerCharacteristics' to set a plattform specific implementation of 'IComputerCharacteristics'.");
 
             var encodedCharacteristics = new List<string>();
             foreach (var characteristic in theComputerCharacteristics.GetCharacteristicsForCurrentComputer())

@@ -9,7 +9,7 @@ using System.Text;
 
 namespace ThinkSharp.Licensing.Licensing
 {
-    internal class WindowsComputerIdentifierCreator : IComputerCharacteristics
+    internal class DefaultComputerCharacteristics : IComputerCharacteristics
     {
         public IEnumerable<string> GetCharacteristicsForCurrentComputer()
         {
