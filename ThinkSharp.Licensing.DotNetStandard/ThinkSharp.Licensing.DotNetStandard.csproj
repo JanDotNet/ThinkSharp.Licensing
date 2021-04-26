@@ -18,4 +18,8 @@
 
   <Import Project="..\ThinkSharp.Licensing.Shared\ThinkSharp.Licensing.Shared.projitems" Label="Shared" />
 
+  <ItemGroup>
+    <PackageReference Include="System.Management" Version="5.0.0" />
+  </ItemGroup>
+
 </Project>
