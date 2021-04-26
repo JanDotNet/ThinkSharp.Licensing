@@ -23,6 +23,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Licensing\SignedLicense.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Licensing\SignedLicenseEncryption.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Licensing\SignedLicenseException.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Licensing\WindowsComputerIdentifierCreator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Signing\ISigner.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Signing\SigningKeyPair.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Signing\RSA\RsaExtensions.cs" />

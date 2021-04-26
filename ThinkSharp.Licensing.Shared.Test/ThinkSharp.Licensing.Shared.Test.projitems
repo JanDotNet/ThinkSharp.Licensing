@@ -13,6 +13,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)CheckSumTest.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)EncoderTest.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helper\StringHelperTest.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Licensing\HardwareIdentifierDotNetFullTest.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Licensing\HardwareIdentifierTest.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Licensing\SerialNumberTest.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Licensing\SignedLicenseTest.cs" />
