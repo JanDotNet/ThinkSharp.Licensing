@@ -5,11 +5,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management;
+using System.Runtime.Versioning;
 using System.Text;
 
 namespace ThinkSharp.Licensing.Licensing
 {
-    internal class DefaultComputerCharacteristics : IComputerCharacteristics
+    internal class WindowsComputerCharacteristics : IComputerCharacteristics
     {
         public IEnumerable<string> GetCharacteristicsForCurrentComputer()
         {
