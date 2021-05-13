@@ -10,6 +10,9 @@ using System.Text;
 
 namespace ThinkSharp.Licensing.Licensing
 {
+#if NET5_0
+    [SupportedOSPlatform("windows")]
+#endif
     internal class WindowsComputerCharacteristics : IComputerCharacteristics
     {
         public IEnumerable<string> GetCharacteristicsForCurrentComputer()

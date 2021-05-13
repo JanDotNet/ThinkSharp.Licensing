@@ -36,7 +36,10 @@ namespace ThinkSharp.Licensing.Licensing
 
         static HardwareIdentifier()
         {
-            theComputerCharacteristics = new DefaultComputerCharacteristics();
+#if NET5_0
+            if (OperatingSystem.IsWindows())
+#endif
+                theComputerCharacteristics = new WindowsComputerCharacteristics();
         }
 
         /// <summary>
