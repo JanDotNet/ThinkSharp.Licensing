@@ -4,11 +4,11 @@
 using System;
 using System.Linq;
 using System.Security.Cryptography;
-using ThinkSharp.Licensing.Licensing;
+using ThinkSharp.Licensing;
 
 namespace ThinkSharp.Licensing.Signing.RSA
 {
-    public static class RsaExtensions
+  public static class RsaExtensions
     {
         /// <summary>
         /// Uses RSA algorithm for signing the license with the specified private key.

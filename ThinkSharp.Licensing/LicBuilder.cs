@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using ThinkSharp.Licensing.Signing;
 
-namespace ThinkSharp.Licensing.Licensing
+namespace ThinkSharp.Licensing
 {
     internal class LicBuilder : IBuilder_Signer, IBuilder_HardwareIdentifier, IBuilder_SerialNumber, IBuilder_Expiration, IBuilder_Properties
     {
