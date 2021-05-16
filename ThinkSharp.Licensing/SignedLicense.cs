@@ -10,7 +10,7 @@ using System.Text;
 using ThinkSharp.Licensing.Helper;
 using ThinkSharp.Licensing.Signing;
 
-namespace ThinkSharp.Licensing.Licensing
+namespace ThinkSharp.Licensing
 {
     /// <summary>
     /// Class that encapsulates some license related information and a signature for verifying it

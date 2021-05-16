@@ -5,7 +5,7 @@ using System;
 using System.Linq;
 using System.Text;
 
-namespace ThinkSharp.Licensing.Licensing
+namespace ThinkSharp.Licensing
 {
     internal class SignedLicenseEncryption
     {

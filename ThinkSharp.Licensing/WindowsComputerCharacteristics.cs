@@ -8,7 +8,7 @@ using System.Management;
 using System.Runtime.Versioning;
 using System.Text;
 
-namespace ThinkSharp.Licensing.Licensing
+namespace ThinkSharp.Licensing
 {
 #if NET5_0
     [SupportedOSPlatform("windows")]

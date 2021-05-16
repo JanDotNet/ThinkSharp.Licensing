@@ -7,7 +7,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace ThinkSharp.Licensing.Licensing
+namespace ThinkSharp.Licensing
 {
     /// <summary>
     /// Interface that abstracts an OS specific implementation for creating characteristics of the current computer.

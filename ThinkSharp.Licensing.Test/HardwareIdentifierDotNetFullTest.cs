@@ -4,9 +4,9 @@
 using System;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ThinkSharp.Licensing.Licensing;
+using ThinkSharp.Licensing;
 
-namespace ThinkSharp.Licensing.Test.Licensing
+namespace ThinkSharp.Licensing.Test
 {
     [TestClass]
     public class HardwareIdentifierDotNetFullTest

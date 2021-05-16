@@ -4,12 +4,11 @@
 using System;
 using System.Linq;
 
-namespace ThinkSharp.Licensing.Licensing
+namespace ThinkSharp.Licensing
 {
-    public class SignedLicenseException : Exception
-    {
-        public SignedLicenseException(string message)
-            : base(message)
-        { }
-    }
+    internal class LicKeyGenerator : IKeyGenerator
+    { }
+
+    public interface IKeyGenerator
+    { }
 }
