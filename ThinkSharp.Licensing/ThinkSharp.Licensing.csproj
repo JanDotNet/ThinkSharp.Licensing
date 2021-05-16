@@ -18,7 +18,7 @@
     <RepositoryUrl>https://github.com/JanDotNet/ThinkSharp.Licensing.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageReleaseNotes>1.0,0
-* Improved project structure (some non-compatible changes in namepaces)
+* Improved project structure (some non-compatible changes in namespaces)
 * Added support for .net 5.0
 0.2.1
 * Added properties: SignedLicense.HasSerialNumber, SignedLicense.HasHardwareIdentifier, SignedLicense.HasExpirationDate</PackageReleaseNotes>
