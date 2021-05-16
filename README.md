@@ -161,6 +161,10 @@ ThinkSharp.Licensing is released under [The MIT license (MIT)](LICENSE.TXT)
 
 We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/JanDotNet/ThinkSharp.Licensing/tags). 
     
+## Credits
+
+Thanks to [Peter-B-](https://github.com/Peter-B-) for simplifying the project structure and improving compatibility to .Net 5.0.
+    
 ## Donation
 If you like ThinkSharp.Licensing and use it in your project(s), feel free to give me a cup of coffee :) 
 
