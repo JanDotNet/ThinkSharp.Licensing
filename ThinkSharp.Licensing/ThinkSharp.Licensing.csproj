@@ -1,0 +1,43 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net452;netstandard2.0;net5.0</TargetFrameworks>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>Jan-Niklas Schäfer</Authors>
+    <Company>ThinkSharp</Company>
+    <Product>ThinkSharp.Licensing</Product>
+    <Description>Simple library with fluent API for creating and verifying signed licenses</Description>
+    <PackageTags>License Signing Serial Key Security</PackageTags>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
+    <Version>1.0.0</Version>
+    <PackageLicenseFile>LICENSE.TXT</PackageLicenseFile>
+    <PackageProjectUrl>https://github.com/JanDotNet/ThinkSharp.Licensing</PackageProjectUrl>
+    <Copyright>Copyright (c) 2017, 2021 Jan-Niklas Schäfer</Copyright>
+    <PackageId>ThinkSharp.Licensing</PackageId>
+    <RepositoryUrl>https://github.com/JanDotNet/ThinkSharp.Licensing.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageReleaseNotes>1.0,0
+* Improved project structure (some non-compatible changes in namepaces)
+* Added support for .net 5.0
+0.2.1
+* Added properties: SignedLicense.HasSerialNumber, SignedLicense.HasHardwareIdentifier, SignedLicense.HasExpirationDate</PackageReleaseNotes>
+    <NeutralLanguage></NeutralLanguage>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>bin\Release\netstandard2.0\ThinkSharp.Licensing.DotNetStandard.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Management" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\LICENSE.TXT">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>
