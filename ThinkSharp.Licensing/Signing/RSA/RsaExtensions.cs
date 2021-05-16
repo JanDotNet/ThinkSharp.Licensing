@@ -2,11 +2,11 @@
 // Licensed under the MIT License. See LICENSE file in the project root for full license information.
 
 using System;
-using System.Linq;
 using System.Security.Cryptography;
-using ThinkSharp.Licensing;
+using ThinkSharp.Licensing.Signing;
+using ThinkSharp.Licensing.Signing.RSA;
 
-namespace ThinkSharp.Licensing.Signing.RSA
+namespace ThinkSharp.Licensing
 {
   public static class RsaExtensions
     {
