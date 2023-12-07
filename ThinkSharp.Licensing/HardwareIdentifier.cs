@@ -27,7 +27,7 @@ namespace ThinkSharp.Licensing
     public static class HardwareIdentifier
     {        
         private static readonly CheckSumAppender CheckSumAppender = new CheckSumAppender(Separator, new CheckSum(4));
-        private static readonly HashAlgorithm MD5 = new MD5CryptoServiceProvider();
+        private static readonly HashAlgorithm MD5Algorithm = MD5.Create();
         private static readonly Encoder Encoder = new Encoder(PartSize);
 
         private const int PartSize = 8;
@@ -36,10 +36,10 @@ namespace ThinkSharp.Licensing
 
         static HardwareIdentifier()
         {
-#if NET5_0
+#if NET6_0_OR_GREATER
             if (OperatingSystem.IsWindows())
 #endif
-                theComputerCharacteristics = new WindowsComputerCharacteristics();
+            theComputerCharacteristics = new WindowsComputerCharacteristics();
         }
 
         /// <summary>
@@ -75,7 +75,7 @@ namespace ThinkSharp.Licensing
             {
 
                 var bytes = Encoding.UTF8.GetBytes(characteristic);
-                bytes = MD5.ComputeHash(bytes);
+                bytes = MD5Algorithm.ComputeHash(bytes);
 
                 encodedCharacteristics.Add(Encoder.Encode(bytes));
             }

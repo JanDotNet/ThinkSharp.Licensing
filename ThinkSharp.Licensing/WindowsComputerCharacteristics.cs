@@ -10,7 +10,7 @@ using System.Text;
 
 namespace ThinkSharp.Licensing
 {
-#if NET5_0
+#if NET6_0_OR_GREATER
     [SupportedOSPlatform("windows")]
 #endif
     internal class WindowsComputerCharacteristics : IComputerCharacteristics

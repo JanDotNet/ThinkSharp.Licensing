@@ -16,7 +16,7 @@ namespace ThinkSharp.Licensing.Signing.RSA
         private RsaSigner()
         {
             myCryptoServiceProvider = new RSACryptoServiceProvider();
-            myHashAlgo = new SHA512CryptoServiceProvider();
+            myHashAlgo =  SHA512.Create();
         }
 
         public RsaSigner(RSAParameters rsaParameters)
