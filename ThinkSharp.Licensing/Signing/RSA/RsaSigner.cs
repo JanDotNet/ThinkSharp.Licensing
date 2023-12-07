@@ -2,7 +2,6 @@
 // Licensed under the MIT License. See LICENSE file in the project root for full license information.
 
 using System;
-using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -16,7 +15,7 @@ namespace ThinkSharp.Licensing.Signing.RSA
         private RsaSigner()
         {
             myCryptoServiceProvider = new RSACryptoServiceProvider();
-            myHashAlgo = new SHA512CryptoServiceProvider();
+            myHashAlgo =  SHA512.Create();
         }
 
         public RsaSigner(RSAParameters rsaParameters)
