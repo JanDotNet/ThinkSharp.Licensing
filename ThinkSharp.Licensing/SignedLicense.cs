@@ -21,7 +21,8 @@ namespace ThinkSharp.Licensing
         // ////////////////////////////////////////////////////////////////////
 
         internal SignedLicense(string hardwareIdentifier, string serialNumber, DateTime issueDate, DateTime expirationDate, IDictionary<string, string> properties)
-            : this(hardwareIdentifier, serialNumber, issueDate, expirationDate, properties, null)
+            : this(hardwareIdentifier, serialNumber, DateTime.UtcNow.Date, expirationDate, properties, null)
+            // TODO issueDate is not applied here
         {  }
 
         private SignedLicense(string hardwareIdentifier, string serialNumber, DateTime issueDate, DateTime expirationDate, IDictionary<string, string> properties, string signature)
