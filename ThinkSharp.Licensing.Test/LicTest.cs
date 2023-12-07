@@ -33,7 +33,7 @@ namespace ThinkSharp.Licensing.Test
             Assert.AreEqual("ABC", license.HardwareIdentifier);
             Assert.AreEqual("CDE", license.SerialNumber);
             Assert.AreEqual(expireDate, license.ExpirationDate);
-            Assert.AreEqual(DateTime.UtcNow.Date, license.IssueDate);
+            Assert.AreEqual(DateTime.UtcNow.Date, license.IssueDate.Date);
             Assert.AreEqual(2, license.Properties.Count);
             Assert.AreEqual("Value1", license.Properties["Prop1"]);
             Assert.AreEqual("Value2", license.Properties["Prop2"]);
@@ -53,7 +53,7 @@ namespace ThinkSharp.Licensing.Test
             Assert.AreEqual(HardwareIdentifier.NoHardwareIdentifier, license.HardwareIdentifier);
             Assert.AreEqual(SerialNumber.NoSerialNumber, license.SerialNumber);
             Assert.AreEqual(DateTime.MaxValue, license.ExpirationDate);
-            Assert.AreEqual(DateTime.UtcNow.Date, license.IssueDate);
+            Assert.AreEqual(DateTime.UtcNow.Date, license.IssueDate.Date);
             Assert.AreEqual(0, license.Properties.Count);
         }
 

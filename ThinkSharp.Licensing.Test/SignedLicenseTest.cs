@@ -156,7 +156,7 @@ namespace ThinkSharp.Licensing.Test
         private static void AssertDefaultPropertiesAreValid(SignedLicense file)
         {
             Assert.AreEqual("HardwareID", file.HardwareIdentifier);
-            Assert.AreEqual(DateTime.UtcNow.Date, file.IssueDate);
+            Assert.AreEqual(DateTime.UtcNow.Date, file.IssueDate.Date);
             Assert.AreEqual("SerialNumber", file.SerialNumber);
         }
 
