@@ -4,16 +4,13 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
 using System.Threading;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ThinkSharp.Licensing;
-using ThinkSharp.Licensing.Signing.RSA;
 using ThinkSharp.Licensing.Test.Signing;
 
 namespace ThinkSharp.Licensing.Test
 {
-  [TestClass]
+    [TestClass]
     public class SignedLicenseTest
     {
         [TestMethod]

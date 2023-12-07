@@ -3,14 +3,11 @@
 
 using System;
 using System.Globalization;
-using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ThinkSharp.Licensing;
-using ThinkSharp.Licensing.Signing.RSA;
 
 namespace ThinkSharp.Licensing.Test
 {
-  [TestClass]
+    [TestClass]
     public class LicTest
     {
         // Private

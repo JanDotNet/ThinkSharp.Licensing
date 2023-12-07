@@ -2,15 +2,14 @@
 // Licensed under the MIT License. See LICENSE file in the project root for full license information.
 
 using System;
-using System.Linq;
 using ThinkSharp.Licensing.Signing;
 
 namespace ThinkSharp.Licensing
 {
-  /// <summary>
-  /// Entry point of fluent API for working with licenses.
-  /// </summary>
-  public static class Lic
+    /// <summary>
+    /// Entry point of fluent API for working with licenses.
+    /// </summary>
+    public static class Lic
   {
     /// <summary>
     /// Creates a new builder for creating signed license objects.
